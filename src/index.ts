@@ -12,9 +12,9 @@ export default (api: IApi) => {
   api.addRuntimePluginKey('getInitialState');
 
   api.onGenerateFiles(()=>{
-    const entryFile = findJS(join(paths.absSrcPath, 'app'))!;
-    const relEntryFile = relative(paths.cwd, entryFile);
+    const entryFile = findJS(join(paths.absSrcPath, 'app'));
     if (entryFile) {
+      const relEntryFile = relative(paths.cwd, entryFile);
       api.writeTmpFile(RELATIVE_MODEL_PATH, `import { useState, useEffect } from 'react';
 import { Models } from 'umi';
 import * as app from '@/app';
@@ -56,7 +56,7 @@ export default () => {
       api.writeTmpFile(RELATIVE_MODEL_PATH, `import React from 'react';
 
 export default () => {
-  console.error('[@umijs/plugin-initial-state]: 检测到 init 插件已经开启，但是未在 app.ts/js 中定义 getInitialState 方法');
+  console.error('[@umijs/plugin-initial-state]: 检测到 @umijs/plugin-initial-state 插件已经开启，但是未在 app.ts/js 中定义 getInitialState 方法。');
   return {};
 }
 `);
