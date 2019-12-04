@@ -18,7 +18,6 @@ export default (api: IApi) => {
   // 注册 getInitialInfo 方法
   api.addRuntimePluginKey('getInitialInfo');
   const entryFile = findJS(join(paths.absSrcPath, 'app'));
-  
 
   if(entryFile){
     api.addPageWatcher([
@@ -98,7 +97,7 @@ export default () => {
       }
     } catch(e) {
       api.log.error('[plugin-initial-state]: 入口文件解析失败', e);
-    };
+    }
   });
 
   api.writeTmpFile(`${DIR_NAME}/init.ts`, defaultContent);
