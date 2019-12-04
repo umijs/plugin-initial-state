@@ -19,7 +19,7 @@ export default (api: IApi) => {
 import { Models } from 'umi';
 import * as app from '@/app';
 
-export type InitState = Models<'@@initialState'>;
+export type InitialState = Models<'@@initialState'>;
 async function getInitialState() {
   if (!app.getInitialState) {
     throw new Error('getInitialState is not defined in ${relEntryFile}');
@@ -65,7 +65,7 @@ export default () => {
 
   api.addUmiExports([
     {
-      specifiers: ['InitState'],
+      specifiers: ['InitialState'],
       source: join(api.paths.absTmpDirPath, RELATIVE_MODEL),
     },
   ]);
