@@ -6,7 +6,7 @@
 [![GitHub Actions status](https://github.com/umijs/plugin-initial-state/workflows/Node%20CI/badge.svg)](https://github.com/umijs/plugin-initial-state)
 [![NPM downloads](http://img.shields.io/npm/dm/@umijs/plugin-initial-state.svg?style=flat)](https://npmjs.org/package/@umijs/plugin-initial-state)
 
-umi plugin to store initial state globally.
+Umi plugin to store initial state globally.
 
 ## Install
 
