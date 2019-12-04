@@ -27,10 +27,10 @@ export default {
 };
 ```
 
-### 2. Add getInitialInfo into `src/app.ts`
+### 2. Add getInitialState into `src/app.ts`
 
 ```js
-export async function getInitialInfo() {
+export async function getInitialState() {
   return 'Hello World';
 }
 ```

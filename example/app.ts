@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const getInitialInfo = async() => {
+export const getInitialState = async() => {
   const mockService = () => new Promise<{ email: string, name: string }>(res => setTimeout(()=>{
     res({
       name: 'troy',
