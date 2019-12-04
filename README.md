@@ -12,7 +12,7 @@ umi plugin to store initial state globally.
 
 ```bash
 # or yarn
-$ npm install @umijs/plugin-initial-state
+$ npm install @umijs/plugin-initial-state --save
 ```
 
 ## Usage
@@ -27,13 +27,10 @@ export default {
 };
 ```
 
-### 2. Add getInitialInfo into entry file
+### 2. Add getInitialInfo into `src/app.ts`
 
 ```js
-// src/app.ts
-import { useState } from 'react';
-
-export const getInitialInfo = () => {
+export async function getInitialInfo() {
   return 'Hello World';
 }
 ```
@@ -45,8 +42,8 @@ import React from 'react';
 import { useModel } from 'umi';
 
 export default () => {
-  const state = useModel('@@initialState');
-  return <>{ state }</>;
+  const { initialState, loading, refresh } = useModel('@@initialState');
+  return <>{ loading ? 'loading...' : initialState }</>;
 };
 ```
 
