@@ -1,7 +1,7 @@
 {
   "name": "@umijs/plugin-initial-state",
   "version": "0.1.0",
-  "description": "umi plugin to store initial state globally.",
+  "description": "Umi plugin to store initial state globally.",
   "license": "MIT",
   "repository": {
     "type": "git",
