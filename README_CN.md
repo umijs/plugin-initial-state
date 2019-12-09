@@ -1,4 +1,4 @@
-English | [中文文档](./README_CN.md)
+[English](./README.md) | 中文文档
 
 # @umijs/plugin-initial-state
 
@@ -8,20 +8,20 @@ English | [中文文档](./README_CN.md)
 [![GitHub Actions status](https://github.com/umijs/plugin-initial-state/workflows/Node%20CI/badge.svg)](https://github.com/umijs/plugin-initial-state)
 [![NPM downloads](http://img.shields.io/npm/dm/@umijs/plugin-initial-state.svg?style=flat)](https://npmjs.org/package/@umijs/plugin-initial-state)
 
-Umi plugin to store initial state globally.
+在全局中注册初始化信息的 umi plugin.
 
-## Install
+## 安装
 
 ```bash
 # or yarn
 $ npm install @umijs/plugin-initial-state --save
 ```
 
-## Usage
+## 用法
 
-Getting started in 3 steps.
+3 步开始使用 @umijs/plugin-initial-state
 
-### 1. Configure in `.umirc.js`
+### 1. 在 `.umirc.js` 中配置
 
 ```js
 export default {
@@ -29,7 +29,7 @@ export default {
 };
 ```
 
-### 2. Add getInitialState into `src/app.ts`
+### 2. 在 `src/app.ts` 中配置 getInitialState 方法
 
 ```js
 export async function getInitialState() {
@@ -37,7 +37,7 @@ export async function getInitialState() {
 }
 ```
 
-### 3. Use it in your React Component or other models
+### 3. 在 React 组件或其他 Model 中使用 initialState
 
 ```js
 import React from 'react';
@@ -49,7 +49,7 @@ export default () => {
 };
 ```
 
-Full example can find in [./example](https://github.com/umijs/plugin-initial-state/tree/master/example).
+完整例子可参考 [./example](https://github.com/umijs/plugin-initial-state/tree/master/example).
 
 ## LICENSE
 

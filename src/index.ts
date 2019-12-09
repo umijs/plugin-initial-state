@@ -56,7 +56,7 @@ export default () => {
       api.writeTmpFile(RELATIVE_MODEL_PATH, `import React from 'react';
 
 export default () => {
-  console.error('[@umijs/plugin-initial-state]: 检测到 @umijs/plugin-initial-state 插件已经开启，但是未在 app.ts/js 中定义 getInitialState 方法。');
+  ${process.env.NODE_ENV === 'development' ? `throw new Error('[@umijs/plugin-initial-state]: 检测到 @umijs/plugin-initial-state 插件已经开启，但是不存在 app.ts/js 入口文件。');` : ''}
   return {};
 }
 `);
