@@ -11,8 +11,8 @@ export default (api: IApi) => {
 
   api.writeTmpFile(join(DIR_NAME, 'Provider.tsx'), providerContent);
 
-    // Add provider to prevent render
-    api.addRuntimePlugin(join(__dirname, './runtime'));
+  // Add provider to prevent render
+  api.addRuntimePlugin(join(__dirname, './runtime'));
 
   api.onGenerateFiles(()=>{
     const entryFile = findJS(join(paths.absSrcPath, 'app'));

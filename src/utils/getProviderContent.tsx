@@ -11,7 +11,7 @@ interface Props {
 export default (props: Props) => {
   const { children } = props;
   const appLoaded = useRef(false);
-  const { loading } = useModel('@@initialState');
+  const { loading = false } = useModel('@@initialState') || {};
   useEffect(()=>{
     if(!loading){
       appLoaded.current = true
