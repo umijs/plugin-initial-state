@@ -2,7 +2,14 @@ import { IApi } from 'umi-types';
 import { join, relative } from 'path';
 import providerContent from './utils/getProviderContent';
 import getModelContent from './utils/getModelContent';
-import { DIR_NAME, RELATIVE_MODEL, RELATIVE_MODEL_PATH } from './constants';
+import getExportContent from './utils/getExportContent';
+import {
+  DIR_NAME,
+  RELATIVE_MODEL,
+  RELATIVE_MODEL_PATH,
+  RELATIVE_EXPORT,
+  RELATIVE_EXPORT_PATH,
+} from './constants';
 
 export default (api: IApi) => {
   const { paths, findJS } = api;
@@ -14,26 +21,23 @@ export default (api: IApi) => {
   // Add provider to prevent render
   api.addRuntimePlugin(join(__dirname, './runtime'));
 
-  api.onGenerateFiles(()=>{
+  api.onGenerateFiles(() => {
     const entryFile = findJS(join(paths.absSrcPath, 'app'));
     if (entryFile) {
       const relEntryFile = relative(paths.cwd, entryFile);
       api.writeTmpFile(RELATIVE_MODEL_PATH, getModelContent(relEntryFile));
+      api.writeTmpFile(RELATIVE_EXPORT_PATH, getExportContent(RELATIVE_MODEL));
     } else {
-      api.writeTmpFile(RELATIVE_MODEL_PATH, `import React from 'react';
-
-export default () => {
-  ${process.env.NODE_ENV === 'development' ? `throw new Error('[@umijs/plugin-initial-state]: 检测到 @umijs/plugin-initial-state 插件已经开启，但是不存在 app.ts/js 入口文件。');` : ''}
-  return {};
-}
-`);
+      api.log.warn(
+        '[@umijs/plugin-initial-state]: 检测到 @umijs/plugin-initial-state 插件已经开启，但是不存在 app.ts/js 入口文件。',
+      );
     }
   });
 
   api.addUmiExports([
     {
-      specifiers: ['InitialState'],
-      source: join(api.paths.absTmpDirPath, RELATIVE_MODEL),
+      exportAll: true,
+      source: api.winPath(join(api.paths.absTmpDirPath, RELATIVE_EXPORT)),
     },
   ]);
 
@@ -41,6 +45,6 @@ export default () => {
     {
       absPath: join(paths.absTmpDirPath, RELATIVE_MODEL_PATH),
       namespace: '@@initialState',
-    }
+    },
   ]);
-}
+};
